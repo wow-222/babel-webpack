@@ -1,4 +1,4 @@
 # babel-webpack
-babel+webpack+vue
-npm i
-npm run build
+babel+webpack+vue\<br> 
+npm i\<br> 
+npm run build\<br> 
