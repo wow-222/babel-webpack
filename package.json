@@ -13,7 +13,6 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-runtime": "^6.26.0",
-    "vue": "^2.5.17",
     "webpack": "^4.16.5"
   },
   "devDependencies": {

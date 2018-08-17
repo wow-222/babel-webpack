@@ -1,4 +1,7 @@
-import {ComponentA} from "./module1.js";
+import {ComponentA} from "./components/module1";
+import {getData} from "./common/api";
+
+
 (()=>{
   new Vue({
     el: '#contable',
