@@ -1,14 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="lib/vue.min.js"></script>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 30;
+            bottom: 40px;
+            width: 100%;
+            background: #f3f3f3;
+            transform: translate3d(0, 0, 0)
+        }
+        .nav-wrapper{
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 30;
+            height: 100%;
+            width: 100%;
+            background: #fff;
+            transform: translate3d(0, 0, 0)
+        }
+        .container div{
+            font-size: 25px;
+        }
+
+        .slide-enter {
+            transform: translate3d(100%, 0, 0)
+        }
+
+        .slide-leave-to {
+            transform: translate3d(100%, 0, 0)
+        }
+
+        .slide-enter-active,
+        .slide-leave-active {
+            transition: .5s
+        }
+        .header div{
+            position: absolute;
+            left: 10px;
+        }
+        .header{
+            text-align: center;
+            background: #000;
+            color: #fff;
+        }
+        .header span{
+            font-size: 16px;
+            height: 40px;
+            line-height: 40px;
+        }
+        ul,li{
+            margin:0;
+            padding: 0;
+            list-style: none;
+        }
+        .nav-bar{
+            display: flex;
+        }
+        .nav-bar li{
+            flex: 1;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+        }
+        .tab-bar{
+            position: absolute;
+            bottom: 0;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            z-index: 40;
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-top: 1px solid #ccc;
+        }
+        .tab-bar li.tab-button{
+            flex: 1;
+            height: 40px;
+            text-align: center;
+        }
+        .tab-bar li.active{
+            color: #ff3a9d;
+        }
+    </style>
 </head>
+
 <body>
     <div id="contable"></div>
+    <script src="lib/zepto.min.js"></script>
+    <script src="lib/vue.min.js"></script>
     <script src="dist/app.js"></script>
 </body>
+
 </html>

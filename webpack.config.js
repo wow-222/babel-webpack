@@ -9,7 +9,17 @@ module.exports = {
     filename: 'app.js'
   },
   plugins: [
-    new UglifyJsPlugin()
+    new UglifyJsPlugin({
+      parallel: 4,
+      uglifyOptions: {
+        ie8: false,
+        output: {
+          comments: false,
+          beautify: false
+        },
+        warnings: false
+      }
+    })
   ],
   watch: true,
   module: {

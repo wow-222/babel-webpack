@@ -1,8 +1,8 @@
-import Base from "util";
-import {config} from "config";
+import Base from "../common/util";
+import {config} from "../common/config";
 const base = new Base();
 
-export async function getData(currentPage,pageSize,planName,planType) {
+export function getData(currentPage,pageSize,planName,planType) {
     let url = config.restUrl + '/schedule/plan/monitorPage.json';
     let paras = Object.assign(config.commonParas,{
         "currentPage": currentPage,
@@ -13,9 +13,5 @@ export async function getData(currentPage,pageSize,planName,planType) {
             "volumeId": $("#volumn").attr("data-id")
         }
     })
-    try {
-        return await base.getAjaxData(url,paras);
-    } catch (error) {
-        return error;
-    }
+    return base.getAjaxData(url,paras);
 }

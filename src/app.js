@@ -1,28 +1,30 @@
-import {ComponentA} from "./components/module1";
-import {getData} from "./common/api";
-
-
+import {TabHome,TabPosts,TabArchive} from "./page/TabPage";
 (()=>{
+  Vue.component('tab-home', TabHome);
+  Vue.component('tab-posts', TabPosts);
+  Vue.component('tab-archive', TabArchive);
   new Vue({
     el: '#contable',
     data:{
-      currentPage: 1,
+      currentTab: 'Home',
+      tabs: ['Home', 'Posts', 'Archive']
     },
-    mounted(){
-      console.log(this.currentPage);
-    },
-    template: `<div @click="demo">88888
-                <component-a></component-a>
-              </div>`,
-    methods:{
-      demo(){
-        console.log(8987987)
+    template: `<div>
+    <ul class="tab-bar">
+      <li 
+        v-for="tab in tabs"
+        :key="tab"
+        :class="['tab-button', { active: currentTab === tab }]"
+        @click="currentTab = tab"
+        >{{tab}}
+      </li>
+    </ul>
+    <component v-bind:is="currentTabComponent" class="tab"></component>
+    </div>`,
+    computed: {
+      currentTabComponent: function () {
+        return 'tab-' + this.currentTab.toLowerCase()
       }
-    },
-    components: {
-      'component-a': ComponentA
     }
   })
-
-  
 })()

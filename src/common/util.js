@@ -12,7 +12,7 @@ export default class Base {
             $.ajax({
                 'type': 'POST',
                 'url': url,
-                'data': JSON.stringify(paras),
+                'data': JSON.stringify(params),
                 "contentType": 'application/json',
                 "dataType": "json",
                 beforeSend: function(){
