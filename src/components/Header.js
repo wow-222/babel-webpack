@@ -1,8 +1,13 @@
 export const Header = {
+  props: {
+    name: {
+      type: String
+    }
+  },
     template: 
     `<div class="header">
       <div @click="hide"><</div>
-      <span>CommonNav</span>
+      <span>{{name}}</span>
     </div>`,
     methods:{
       hide() {

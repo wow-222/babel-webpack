@@ -1,7 +1,9 @@
 import {Header} from "../components/Header"
 export const ComponentA = {
     data() {
-      return {}
+      return {
+        list: ["文件夹","应用1"]
+      }
     },
     props: {
       name: {
@@ -10,13 +12,17 @@ export const ComponentA = {
     },
     template: `<transition name="slide">
     <div class="nav-wrapper">
-      <Header @back=back></Header>
-      <span>{{name}}</span>
+      <Header @back=back :name=name></Header>
+      <span>文件夹</span>
+      <span>应用1</span>
     </div>
     </transition>`,
     methods:{
       back() {
-        this.$emit('back')
+        this.$store.dispatch({
+          type: 'setNavName',
+          name: ''
+        })
       }
     },
     components:{

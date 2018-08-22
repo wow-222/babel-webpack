@@ -1,30 +1,54 @@
-import {TabHome,TabPosts,TabArchive} from "./page/TabPage";
-(()=>{
-  Vue.component('tab-home', TabHome);
-  Vue.component('tab-posts', TabPosts);
-  Vue.component('tab-archive', TabArchive);
+import {
+  ComponentA
+} from "./page/ComponentA";
+import {
+  ComponentB
+} from "./page/ComponentB";
+import store from './store';
+(() => {
   new Vue({
     el: '#contable',
-    data:{
-      currentTab: 'Home',
-      tabs: ['Home', 'Posts', 'Archive']
-    },
-    template: `<div>
-    <ul class="tab-bar">
-      <li 
-        v-for="tab in tabs"
-        :key="tab"
-        :class="['tab-button', { active: currentTab === tab }]"
-        @click="currentTab = tab"
-        >{{tab}}
-      </li>
-    </ul>
-    <component v-bind:is="currentTabComponent" class="tab"></component>
-    </div>`,
-    computed: {
-      currentTabComponent: function () {
-        return 'tab-' + this.currentTab.toLowerCase()
+    store,
+    data() {
+      return {
+        demoList: [1, 2, 3, 4, 5],
       }
+    },
+    created() {
+      window.addEventListener("resize", this.setRem());
+    },
+    computed: {
+      navName() {
+        return this.$store.getters.navname
+      }
+    },
+    template: `
+  <div class="container">
+      <ul class="nav-bar">
+           <li v-for="value of demoList" @click="onClick">nav{{value}}</li>
+      </ul>
+      <component-a v-if="navName === 'nav1'" @back=back :name=navName></component-a>
+      <component-b v-else-if="navName === 'nav2'" @back=back :name=navName></component-b>
+  </div>`,
+    methods: {
+      onClick() {
+        this.$store.dispatch({
+          type: 'setNavName',
+          name: event.target.innerHTML
+        })
+      },
+      back() {
+        this.navName = '';
+      },
+      setRem() {
+        var html = document.getElementsByTagName("html")[0];
+        var width = html.getBoundingClientRect().width;
+        html.style.fontSize = width / 18.75 + "px";
+      }
+    },
+    components: {
+      ComponentA,
+      ComponentB
     }
   })
 })()

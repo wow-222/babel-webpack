@@ -10,13 +10,16 @@ export const ComponentB = {
     },
     template: `<transition name="slide">
     <div class="nav-wrapper">
-    <Header @back=back></Header>
+    <Header @back=back :name=name></Header>
       <span>{{name}}</span>
     </div>
     </transition>`,
     methods:{
       back() {
-        this.$emit('back')
+        this.$store.dispatch({
+          type: 'setNavName',
+          name: ''
+        })
       }
     },
     components:{
